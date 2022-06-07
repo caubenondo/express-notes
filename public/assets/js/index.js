@@ -52,8 +52,8 @@ const deleteNote = (id) =>
 
 const renderActiveNote = () => {
     hide(saveNoteBtn);
-
-    if (activeNote.id) {
+    console.log(activeNote);
+    if (!!activeNote.note_id) {
         noteTitle.setAttribute("readonly", true);
         noteText.setAttribute("readonly", true);
         noteTitle.value = activeNote.title;
@@ -81,14 +81,16 @@ const handleNoteSave = () => {
 const handleNoteDelete = (e) => {
     // Prevents the click listener for the list from being called when the button inside of it is clicked
     e.stopPropagation();
+    // console.log(e.target);
 
     const note = e.target;
-    const noteId = JSON.parse(note.parentElement.getAttribute("data-note")).id;
-
+    // const noteId = JSON.parse(note.parentElement.getAttribute("data-note")).id;
+    // new note id via dataset
+    const noteId = JSON.parse(note.closest("li").dataset.note).note_id;
     if (activeNote.id === noteId) {
         activeNote = {};
     }
-
+    console.log(noteId);
     deleteNote(noteId).then(() => {
         getAndRenderNotes();
         renderActiveNote();
@@ -98,7 +100,9 @@ const handleNoteDelete = (e) => {
 // Sets the activeNote and displays it
 const handleNoteView = (e) => {
     e.preventDefault();
-    activeNote = JSON.parse(e.target.parentElement.getAttribute("data-note"));
+    //fix the given systax => use dataset instead of attribute
+    activeNote = JSON.parse(e.target.closest("li").dataset.note);
+
     renderActiveNote();
 };
 
@@ -147,7 +151,7 @@ const renderNoteList = async (notes) => {
                 "delete-note"
             );
             delBtnEl.addEventListener("click", handleNoteDelete);
-            console.log("asdfasdfs");
+
             liEl.append(delBtnEl);
         }
 
