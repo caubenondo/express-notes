@@ -1,1 +1,17 @@
-[]
+[
+    {
+        "title": "NOTE 1",
+        "text": "this is node 1",
+        "note_id": "0fb82373-b37c-4d8e-8bf3-065f546ef55d"
+    },
+    {
+        "title": "Note 2",
+        "text": "This is note 2",
+        "note_id": "3973096b-35e0-43a6-a725-2b2eaf8cb528"
+    },
+    {
+        "title": "third node",
+        "text": "third note",
+        "note_id": "10e3795f-353f-4e8d-a687-5d74faad9342"
+    }
+]
