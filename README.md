@@ -25,6 +25,12 @@ To install necessary dependencies, run the following command:
   npm i
 ```
 
+Run the server at localhost
+
+```
+  node server.js
+```
+
 ## Usage <a name='Usage'></a>
 
 You can access the API routes with `GET /api/notes` which will give you all the notes in JSON format.
